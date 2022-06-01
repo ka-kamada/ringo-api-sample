@@ -48,8 +48,10 @@ public class SearchUserServiceImpl implements SearchUserService {
 	@Override
 	public List<User> readUserAll() {
 
-		List<User> list = this.mapper.getUserAll();
+		System.out.println("1");
 
+		List<User> list = this.mapper.getUserAll();
+		System.out.println("2");
 		return list;
 	}
 
