@@ -7,13 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bean.User;
 import com.example.service.DeleteUserService;
-import com.example.service.SearchUserService;
 
 @RestController
 public class DeleteUserController {
-
-	@Autowired
-	private SearchUserService searchUserService;
 
 	@Autowired
 	private DeleteUserService deleteUserService;
@@ -22,7 +18,7 @@ public class DeleteUserController {
 	public String deleteUser(@PathVariable("id") String id) {
 
 		// idで検索
-		User user = this.searchUserService.readUserId(id);
+		User user = this.deleteUserService.readDeleteUser(id);
 
 		if (user.getId() != null) {
 			// 持ってきたユーザーを論理削除

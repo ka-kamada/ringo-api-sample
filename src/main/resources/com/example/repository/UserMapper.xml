@@ -63,6 +63,7 @@
 	    update user set 
 	    deleted = '1' 
 	    , deleted_at = #{deletedAt}
+	    , deleted_by = #{deletedBy}
 	    where id = #{id}
 	</update>
 	

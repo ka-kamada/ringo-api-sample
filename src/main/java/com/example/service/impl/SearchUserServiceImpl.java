@@ -55,13 +55,4 @@ public class SearchUserServiceImpl implements SearchUserService {
 		return list;
 	}
 
-	/** ID検索 */
-	@Override
-	public User readUserId(String id) {
-
-		User user = this.mapper.getUserId(id);
-
-		return user;
-	}
-
 }

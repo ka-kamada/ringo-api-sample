@@ -26,7 +26,6 @@ public class User {
 		ULID ulid = new ULID();
 
 		this.id = ulid.nextULID();
-
 		this.name = name;
 		this.birthdate = birthdate;
 		this.createdBy = createdBy;
@@ -53,19 +52,18 @@ public class User {
 
 	}
 
-	public static User userNew(String name, LocalDate birthdate, String createdBy) {
+	public static User userNew(String name, LocalDate birthdate) {
 
-		return new User(name, birthdate, createdBy);
-
+		return new User(name, birthdate, "api");
 
 	}
 
-	public User userUpdate(User user, String name, LocalDate birthdate, String updatedBy) {
+	public User userUpdate(User user, String name, LocalDate birthdate) {
 
 		this.name = name;
 		this.birthdate = birthdate;
-		this.updatedBy = updatedBy;
 		this.updatedAt = LocalDateTime.now();
+		this.updatedBy = "api";
 
 		return user;
 
@@ -74,6 +72,7 @@ public class User {
 	public User userDelete(User user) {
 
 		this.deletedAt = LocalDateTime.now();
+		this.deletedBy = "api";
 
 		return user;
 	}

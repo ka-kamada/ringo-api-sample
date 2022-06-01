@@ -13,13 +13,22 @@ public class DeleteUserServiceImpl implements DeleteUserService {
 	@Autowired
 	private UserMapper mapper;
 
+	/** ID検索 */
+	@Override
+	public User readDeleteUser(String id) {
+
+		User user = this.mapper.getUserId(id);
+
+		return user;
+	}
+
 	/** 削除 */
 	@Override
 	public void deleteUser(User user) {
 
 		user.userDelete(user);
 
-		this.mapper.deleteUser(user.getId(), user.getDeletedAt());
+		this.mapper.deleteUser(user.getId(), user.getDeletedAt(), user.getDeletedBy());
 
 	}
 

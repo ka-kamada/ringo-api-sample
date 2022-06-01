@@ -8,14 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bean.User;
 import com.example.bean.UserForm;
-import com.example.service.SearchUserService;
 import com.example.service.UpdateUserService;
 
 @RestController
 public class UpdateUserController {
-
-	@Autowired
-	private SearchUserService searchUserService;
 
 	@Autowired
 	private UpdateUserService updateUserService;
@@ -24,7 +20,7 @@ public class UpdateUserController {
 	public String updateUser(@PathVariable("id") String id, @ModelAttribute UserForm form) {
 
 		// idで検索
-		User user = this.searchUserService.readUserId(id);
+		User user = this.updateUserService.readUpdateUser(id);
 
 		if (user != null) {
 			// 持ってきたユーザーを更新

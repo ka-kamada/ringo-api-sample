@@ -17,9 +17,9 @@ public class RegisterUserServiceImpl implements RegisterUserService {
 
 	/** 登録 */
 	@Override
-	public void createUser(String name, LocalDate birthdate, String createdBy) {
+	public void createUser(String name, LocalDate birthdate) {
 
-		this.mapper.setUser(User.userNew(name, birthdate, createdBy));
+		this.mapper.setUser(User.userNew(name, birthdate));
 	}
 
 }

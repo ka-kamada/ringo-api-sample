@@ -14,11 +14,20 @@ public class UpdateUserServiceImpl implements UpdateUserService {
 	@Autowired
 	private UserMapper mapper;
 
+	/** ID検索 */
+	@Override
+	public User readUpdateUser(String id) {
+
+		User user = this.mapper.getUserId(id);
+
+		return user;
+	}
+
 	/** 更新 */
 	@Override
 	public void updateUser(User user, UserForm form) {
 
-		this.mapper.updateUser(user.userUpdate(user, form.getName(), form.getBirthdate(), form.getUpdatedBy()));
+		this.mapper.updateUser(user.userUpdate(user, form.getName(), form.getBirthdate()));
 
 	}
 

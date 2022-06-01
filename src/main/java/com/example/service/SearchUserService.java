@@ -19,7 +19,4 @@ public interface SearchUserService {
 	/** 全件検索 */
 	public List<User> readUserAll();
 
-	/** ID検索 */
-	public User readUserId(String id);
-
 }
