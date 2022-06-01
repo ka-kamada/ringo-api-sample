@@ -21,7 +21,7 @@ public class User {
 	private LocalDateTime deletedAt;
 	private String deletedBy;
 
-	User(String name, LocalDate birthdate, String createdBy) {
+	public User(String name, LocalDate birthdate, String createdBy) {
 
 		ULID ulid = new ULID();
 
@@ -37,7 +37,7 @@ public class User {
 		this.updatedAt = now;
 	}
 
-	User(String id, String name, LocalDate birthdate, boolean deleted, LocalDateTime createdAt, String createdBy,
+	public User(String id, String name, LocalDate birthdate, boolean deleted, LocalDateTime createdAt, String createdBy,
 			LocalDateTime updatedAt, String updatedBy, LocalDateTime deletedAy, String deletedBy) {
 
 		this.id = id;
@@ -60,6 +60,17 @@ public class User {
 
 	}
 
+	public User userUpdate(User user, String name, LocalDate birthdate, String updatedBy) {
+
+		this.name = name;
+		this.birthdate = birthdate;
+		this.updatedBy = updatedBy;
+		this.updatedAt = LocalDateTime.now();
+
+		return user;
+
+	}
+
 	public String getId() {
 		return this.id;
 	}
@@ -71,5 +82,6 @@ public class User {
 	public LocalDate getBirthdate() {
 		return this.birthdate;
 	}
+
 
 }

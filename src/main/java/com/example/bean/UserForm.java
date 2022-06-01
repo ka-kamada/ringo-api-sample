@@ -1,3 +1,4 @@
+
 package com.example.bean;
 
 import java.time.LocalDate;
@@ -18,6 +19,8 @@ public class UserForm {
 
 	private String createdBy = "api";
 
+	private String updatedBy = "api";
+
 	public String getName() {
 		return this.name;
 	}
@@ -26,8 +29,12 @@ public class UserForm {
 		return this.birthdate;
 	}
 
-	public String getcreatedBy() {
+	public String getCreatedBy() {
 		return this.createdBy;
+	}
+
+	public String getUpdatedBy() {
+		return this.updatedBy;
 	}
 
 	public void setName(String name) {

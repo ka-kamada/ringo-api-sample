@@ -1,7 +1,5 @@
 package com.example.service.impl;
 
-import java.time.LocalDateTime;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +18,7 @@ public class UpdateUserServiceImpl implements UpdateUserService {
 	@Override
 	public void updateUser(User user, UserForm form) {
 
-		user.setName(form.getName());
-		user.setBirthdate(form.getBirthdate());
-		user.setUpdatedAt(LocalDateTime.now());
-
-		this.mapper.updateUser(user);
+		this.mapper.updateUser(user.userUpdate(user, form.getName(), form.getBirthdate(), form.getUpdatedBy()));
 
 	}
 
