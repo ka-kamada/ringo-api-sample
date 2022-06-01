@@ -1,10 +1,10 @@
 package com.example.service;
 
-import com.example.bean.User;
+import java.time.LocalDate;
 
 public interface RegisterUserService {
 
 	/** 登録 */
-	public void createUser(User user);
+	public void createUser(String name, LocalDate birthdate, String createdBy);
 
 }
