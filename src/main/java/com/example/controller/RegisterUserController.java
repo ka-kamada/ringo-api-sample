@@ -18,7 +18,7 @@ public class RegisterUserController {
 	public String signup(@ModelAttribute UserForm form) {
 
 
-		this.registerUserService.createUser(form.getName(), form.getBirthdate(), form.getcreatedBy());
+		this.registerUserService.createUser(form.getName(), form.getBirthdate(), form.getCreatedBy());
 
 		return "登録完了";
 

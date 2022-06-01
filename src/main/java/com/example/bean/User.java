@@ -71,6 +71,13 @@ public class User {
 
 	}
 
+	public User userDelete(User user) {
+
+		this.deletedAt = LocalDateTime.now();
+
+		return user;
+	}
+
 	public String getId() {
 		return this.id;
 	}

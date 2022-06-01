@@ -1,7 +1,5 @@
 package com.example.service.impl;
 
-import java.time.LocalDateTime;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +17,7 @@ public class DeleteUserServiceImpl implements DeleteUserService {
 	@Override
 	public void deleteUser(User user) {
 
-		user.setDeletedAt(LocalDateTime.now());
+		user.userDelete(user);
 
 		this.mapper.deleteUser(user.getId(), user.getDeletedAt());
 
