@@ -4,9 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import de.huxhorn.sulky.ulid.ULID;
-import lombok.Data;
 
-@Data
 public class User {
 
 
@@ -89,5 +87,12 @@ public class User {
 		return this.birthdate;
 	}
 
+	public LocalDateTime getDeletedAt() {
+		return this.deletedAt;
+	}
+
+	public String getDeletedBy() {
+		return this.deletedBy;
+	}
 
 }

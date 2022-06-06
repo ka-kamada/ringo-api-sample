@@ -35,22 +35,21 @@
 	<!-- ユーザー検索 -->
 	<select id="getUser"
 		resultType="com.example.bean.User">
-		select * from user where name like #{name} '%' and birthdate = #{birthdate} and deleted = 0
-	</select>
-	
-	<select id="getUserName"
-		resultType="com.example.bean.User">
-		select * from user where name like #{name} '%' and deleted = 0
-	</select>
-	
-	<select id="getUserBirthdate"
-		resultType="com.example.bean.User">
-		select * from user where birthdate = #{birthdate} and deleted = 0
-	</select>
-	
-	<select id="getUserAll"
-		resultType="com.example.bean.User">
-		select * from user where deleted = 0
+		select * from user where
+		<choose>
+		<when test="name != null and birthdate == null">
+		name like #{name} '%' and deleted = 0
+		</when>
+		<when test="name == null and birthdate != null">
+		birthdate = #{birthdate} and deleted = 0 
+		</when>
+		<when test="name != null and birthdate != null">
+		name like #{name} '%' and birthdate = #{birthdate} and deleted = 0
+		</when>
+		<when test="name == null and birthdate == null">
+		deleted = 0
+		</when>
+		</choose> 
 	</select>
 	
 	<select id="getUserId"

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import lombok.Data;
 
 @Data
-public class UserView {
+public class UserResponse {
 
 	private String id;
 	private String name;

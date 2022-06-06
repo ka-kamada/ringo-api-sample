@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bean.SearchUserForm;
 import com.example.bean.User;
-import com.example.bean.UserView;
+import com.example.bean.UserResponse;
 import com.example.service.SearchUserService;
 
 @RestController
@@ -25,30 +25,20 @@ public class SearchUserController {
 
 
 	@GetMapping("/users")
-	public List<UserView> searchUser(@ModelAttribute SearchUserForm form) {
+	public List<UserResponse> searchUser(@ModelAttribute SearchUserForm form) {
 
-		List<User> list = new ArrayList<User>();
-		List<UserView> listView = new ArrayList<UserView>();
+		List<UserResponse> listResponse = new ArrayList<UserResponse>();
 
-		//それぞれのパターンで検索
-		if(form.getName() != null && form.getBirthdate() == null) {
-			list = this.searchUserService.readUserName(form.getName());
-		} else if(form.getName() == null && form.getBirthdate() != null) {
-			list = this.searchUserService.readUserBirthdate(form.getBirthdate());
-		} else if (form.getName() != null && form.getBirthdate() != null) {
-			list = this.searchUserService.readUser(form.getName(), form.getBirthdate());
-		} else if (form.getName() == null && form.getBirthdate() == null) {
-			list = this.searchUserService.readUserAll();
-		}
+		List<User> list = this.searchUserService.readUser(form.getName(), form.getBirthdate());
 
 		// Listの中身を変換
 		for (int i = 0; i < list.size(); i++) {
 
-			UserView userView = this.modelMapper.map(list.get(i), UserView.class);
-			listView.add(userView);
+			UserResponse userResponse = this.modelMapper.map(list.get(i), UserResponse.class);
+			listResponse.add(userResponse);
 
 		}
-		return listView;
+		return listResponse;
 
 	}
 }

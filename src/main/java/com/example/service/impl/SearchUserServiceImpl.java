@@ -1,6 +1,7 @@
 package com.example.service.impl;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,39 +21,10 @@ public class SearchUserServiceImpl implements SearchUserService {
 	@Override
 	public List<User> readUser(String name, LocalDate birthdate) {
 
-		List<User> list = this.mapper.getUser(name, birthdate);
+		List<User> list = new ArrayList<User>();
+
+		list = this.mapper.getUser(name, birthdate);
 
 		return list;
 	}
-
-	/** 名前検索 */
-	@Override
-	public List<User> readUserName(String name) {
-
-		List<User> list = this.mapper.getUserName(name);
-
-		return list;
-
-	}
-
-	/** 生年月日検索 */
-	@Override
-	public List<User> readUserBirthdate(LocalDate birthdate) {
-
-		List<User> list = this.mapper.getUserBirthdate(birthdate);
-
-		return list;
-	}
-
-	/** 全件検索 */
-	@Override
-	public List<User> readUserAll() {
-
-		System.out.println("1");
-
-		List<User> list = this.mapper.getUserAll();
-		System.out.println("2");
-		return list;
-	}
-
 }
